@@ -1,5 +1,6 @@
 # web_data_scraping_project
 
+<<<<<<< HEAD
 A project idea developed during the winter break to use python for scraping environmental data from a website and then create visualizations. The final result is to be displayed on a self-created webpage.
 
 ## Research & Workflow
@@ -14,3 +15,5 @@ A majority of the information and workflow applied in the project from [this art
 - Visualizations
 
 
+=======
+>>>>>>> 0454cd12e833eefab5fdad070a815a5e52fc6967

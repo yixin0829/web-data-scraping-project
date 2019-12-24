@@ -1,4 +1,3 @@
-from flask import Flask, render_template
 from bs4 import BeautifulSoup
 import requests
 
@@ -7,16 +6,28 @@ content = source.content
 
 # Creating a soup object
 soup = BeautifulSoup(content, features='lxml')
-
 result = soup.find(class_ = "list-results row")
 result_rows = result.find_all(class_ = "unstyled item-content")
 
-# Extracting all the dates data and append them to result_list
-result_list = []
+# Extracting all dates, titles, and author names
+# Append the data to separate lists
+date_list = []
 for element in result_rows:
     li_tag = element.find("li")
-    result_list.append(li_tag.get_text())
+    date_list.append(li_tag.get_text())
 
-print(result_list)
+title_list = []
+for element in result_rows:
+    a_tag = element.find("a")
+    title_list.append(a_tag.get_text())
+
+author_list = []
+for element in result_rows:
+    a_tag = element.find_all("a")[1]
+    author_list.append(a_tag.get_text())
+
+# print(date_list)
+# print(title_list)
+# print(author_list)
 
 

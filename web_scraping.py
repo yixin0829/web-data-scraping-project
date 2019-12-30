@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 import numpy as np
 import requests
-from nltk.tokenize import word_tokenize
 from nltk.probability import FreqDist
 
 
@@ -82,7 +81,6 @@ plt.title(r'Number of Published Data Sets from 2002 - 2019')
 
 
 
-
 # Creating a new plot for visualizing the popular publishers
 plt.figure()
 # Declaring fdist object of class FreqDist
@@ -92,4 +90,6 @@ for word in author_list:
 
 plt.title(r'Number of Published Data Sets from Different Publishers')
 fdist.plot(20)
+
+
 

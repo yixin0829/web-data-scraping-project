@@ -5,8 +5,6 @@ import numpy as np
 import requests
 from nltk.probability import FreqDist
 
-
-
 source = requests.get('https://ags.aer.ca/data-maps-models/digital-data')
 content = source.content
 
@@ -90,6 +88,4 @@ for word in author_list:
 
 plt.title(r'Number of Published Data Sets from Different Publishers')
 fdist.plot(20)
-
-
 

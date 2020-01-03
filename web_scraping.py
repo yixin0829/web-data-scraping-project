@@ -5,8 +5,6 @@ import numpy as np
 import requests
 from nltk.probability import FreqDist
 
-
-
 source = requests.get('https://ags.aer.ca/data-maps-models/digital-data')
 content = source.content
 

@@ -10,9 +10,9 @@ A majority of the information and workflow applied in the project can be found f
 - [x] Web scraping
 - [x] Store data into two .csv files (can be found in doc)
 - [x] Generate basic charts using matplotlib, nltk
-- [] Create a MySQL table and store the data
-- [] Generate charts using Google Charts 
-- [] Develop a website (HTML, CSS, Javascript, FLask) for displaying the final result
+- [ ] Create a MySQL table and store the data
+- [ ] Generate charts using Google Charts 
+- [ ] Develop a website (HTML, CSS, Javascript, FLask) for displaying the final result
 
 ## Needed Tools
 1. Python 3 (bs4, requset, matplotlib, nltk, FLask)

@@ -1,3 +1,4 @@
+# The code scraps data from Aberta Energy Regulator and organize them into two separte .csv files 
 # The website we're scraping data from is: https://ags.aer.ca/data-maps-models/digital-data
 from bs4 import BeautifulSoup
 import requests
@@ -16,14 +17,16 @@ result = soup.find(class_ = "list-results row")
 # html black that contains result of year & id, title, and author data
 containers = result.find_all(class_ = "list-item clearfix")
 
+
+# Creating a .csv to write the ID, date, title, author names data for each data sets
 filename = "date_title_author.csv"
 f = open(filename, "w")
 
 headers = "DataID,Publication date,Titile,Author#1,Author#2,Author#3,Author#4\n"
-
+# Write the header into the first row
 f.write(headers)
 
-
+# Loop through all elements in the HTML block and scrap relevant data(i.e. ID, date, title, author names)
 for container in containers:
     publication_date = container.find(class_ = "pub-date").get_text().strip()
     dataID = container.find("li").get_text().strip()
@@ -33,15 +36,6 @@ for container in containers:
     # authors contains all the a tags html text 
     authors = author_block.find_all("a")
     
-    """
-    # Declare a list for author's name
-    author_list = []
-    for author in authors:
-            author_list.append(author.get_text())
-    # Join the list into one string separated by "|"
-    author_str = "|".join(author_list)
-    """
-
     # write into the csv file every iteration
     # Note: use replace() to replace the "," inside author_list
     f.write(dataID + "," + publication_date.replace(",", " ") + "," + title.replace(",", " "))
@@ -51,6 +45,7 @@ for container in containers:
 
 f.close()
 
+# Creating .csv file to wrtie keywords for each data set
 f = open("key_words.csv", "w")
 f.write("Data ID,Key word#1,Key word#2,Key word#3,Key word#4,Key word#5,Key word#6,Key word#7,Key word#8,Key word#9,Key word#10,Key word#11,Key word#12\n")
 

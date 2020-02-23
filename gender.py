@@ -3,6 +3,9 @@ import numpy as np
 import requests
 import json
 
+# by syh
+
+
 def genderize_api_connect(first_name):
     try:
         url = 'https://api.genderize.io/?name={}'.format(first_name)

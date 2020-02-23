@@ -1,8 +1,11 @@
 import mysql.connector
+import pandas as pd
 from log_util import Logger
 
 
 logger = Logger().logger
+
+#该函数最后用，将all_sql_tables的命令全部执行。
 def build_database(db_name, host_name, user_name, password, all_sql_tables):
   #  Define the connection and the cursor that is used for executing the SQL commands
     my_db = mysql.connector.connect(host=host_name, user=user_name, passwd=password, database=db_name)
@@ -27,7 +30,7 @@ def build_database(db_name, host_name, user_name, password, all_sql_tables):
         else:
             logger.info("connection to MySQL did not succeed.")
 
-def update_num_citations(my_db, cursor):
+def update_num_citations(my_db, cursor): #这个函数要求在线更新，不适合我们爬取的网站。
     # Get all articles from DB (doi_link is a unique key)
     sql_get_articles = """SELECT doi_link, citations, last_name FROM authors;"""
     cursor.execute(sql_get_articles)
@@ -38,6 +41,7 @@ def update_num_citations(my_db, cursor):
     articles_dict = get_citations(articles_dict)
     
     # Update the data in the DB
+    # 这里doi_link是主键，从网上实时爬取citations，存入对应条目
     for doi_link, citations in articles_dict:
         sql_update = """ UPDATE articles SET citations = {0} WHERE (doi_link = '{1}');""".format(int(citations), doi_link)
         cursor.execute(sql_update)
@@ -66,6 +70,7 @@ sql_articles = """CREATE TABLE IF NOT EXISTS articles (ID int AUTO_INCREMENT,
                                                      PRIMARY KEY(ID));"""
 all_sql_tables.append(sql_articles) # list of all sql tables creation
 
+# all_articles应该是article的集合（具体也不太清楚）。
 try:
     # Instert all articles into the articles table.
     # Note that we use INSERT IGNORE which means that duplicates will not be inserted to DB (checked against doi_link).

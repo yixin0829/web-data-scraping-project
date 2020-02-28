@@ -47,7 +47,8 @@ f.close()
 
 # Creating .csv file to wrtie keywords for each data set
 f = open("key_words.csv", "w")
-f.write("Data ID,Key word#1,Key word#2,Key word#3,Key word#4,Key word#5,Key word#6,Key word#7,Key word#8,Key word#9,Key word#10,Key word#11,Key word#12\n")
+headers2 = "Data ID,Key word#1,Key word#2,Key word#3,Key word#4,Key word#5,Key word#6,Key word#7,Key word#8,Key word#9,Key word#10,Key word#11,Key word#12\n"
+f.write(headers2)
 
 # Extract the keywords for each article (needs nested http requests)
 # Issue: take too much time ~15 min

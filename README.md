@@ -9,14 +9,18 @@ A majority of the information and workflow applied in the project can be found f
 - [x] Pick a website 
 - [x] Web scraping
 - [x] Store data into two .csv files (can be found in doc)
+- [x] Calling Gender API to enrich the data
 - [x] Generate basic charts using matplotlib, nltk
 - [x] Create mysql database / (Firebox) and store the data
-- [ ] Generate charts using Google Charts 
-- [ ] Develop a website (HTML, CSS, Javascript, FLask) for displaying the final result
 
 ## Needed Tools
 1. Python 3 (bs4, requset, matplotlib, nltk, FLask)
-2. HTML/CSS/Javascript
-3. MySQL
-4. Google Charts
+2. MySQL
+3. Gender API
 
+## Result
+Please see the data scrapped stored in the **data_title_author.csv and key_words.csv**
+
+Along with **genders.csv** for predicted gender (data enrichment)
+
+Some plots can be found under /plots.
